@@ -1,42 +1,33 @@
-package com.pmd.taskmicroservice.model;
+package com.pmd.taskmicroservice.dto;
 
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document(collection = "tasks")
-public class Task {
-  @Id
+public class TaskDto {
   private String id;
   private String name;
   private String description;
   private String status;
   private Date startDate;
   private Date endDate;
-  private String projectId; // Add this field
 
-  public Task() {
+  public TaskDto() {
   }
 
-  public Task(String name, String description, String status, Date startDate, Date endDate, String projectId) {
+  public TaskDto(String name, String description, String status, Date startDate, Date endDate) {
     this.name = name;
     this.description = description;
     this.status = status;
     this.startDate = startDate;
     this.endDate = endDate;
-    this.projectId = projectId;
   }
 
-  public Task(String id, String name, String description, String status, Date startDate, Date endDate,
-      String projectId) {
+  public TaskDto(String id, String name, String description, String status, Date startDate, Date endDate) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.status = status;
     this.startDate = startDate;
     this.endDate = endDate;
-    this.projectId = projectId;
   }
 
   // Getters and setters
@@ -88,17 +79,9 @@ public class Task {
     this.endDate = endDate;
   }
 
-  public String getProjectId() {
-    return projectId;
-  }
-
-  public void setProjectId(String projectId) {
-    this.projectId = projectId;
-  }
-
   @Override
   public String toString() {
-    return "Task [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status + ", startDate="
-        + startDate + ", endDate=" + endDate + ", projectId=" + projectId + "]";
+    return "TaskDto [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status
+        + ", startDate=" + startDate + ", endDate=" + endDate + "]";
   }
 }
